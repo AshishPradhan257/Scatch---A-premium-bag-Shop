@@ -15,12 +15,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
+const indexRoutes = require("./routes/index");
+
+app.use("/", indexRoutes);
+
 app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
-app.get("/", (req, res) => {
-    res.send("hey");
-});
 
 app.listen(3000);

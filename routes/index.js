@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", function(req, res){
-    res.render("index");
+router.get("/", (req, res) => {
+    res.render("index", { error: "" }); // Ensure error is always defined
 });
 
 module.exports = router;
