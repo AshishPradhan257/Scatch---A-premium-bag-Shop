@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     fullname: String,
     email: String,
     password: String,
@@ -16,4 +16,7 @@ const userSchema = mongoose.Schema({
     picture: String,
 });
 
-module.exports = mongoose.model("user", userSchema);
+// ✅ Check if model already exists before defining
+const userModel = mongoose.models.user || mongoose.model("user", userSchema);
+
+module.exports = userModel;
